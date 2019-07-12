@@ -97,6 +97,24 @@
 					"default": true,
 					"description": "Jump to a note instead of showing the dropdown when there is only one"
 				},
+				"provision.translations": {
+					"type": "object",
+					"description": "Alle the translations",
+					"properties": {
+						"noNoteFound": {
+							"type": "string",
+							"description": "No note found message text"
+						},
+						"dropdownText": {
+							"type": "string",
+							"description": "Dropdown information text"
+						}
+					},
+					"default": {
+						"noNoteFound": "There are no notes past the current point",
+						"dropdownText": "Notes found:"
+					}
+				},
 				"provision.notes": {
 					"type": "array",
 					"description": "",

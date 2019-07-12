@@ -104,6 +104,10 @@ export default class Document {
     }, null, this.context.subscriptions)
   }
 
+  public start() {
+    if(this.onUpdateEvent && this.currentEditor) this.onUpdateEvent(this.getListOfDocumentNotes(this.currentEditor.document))
+  }
+
   public onUpdate(event: (data: any | undefined) => void) {
     this.onUpdateEvent = event
     this.setupEvents()

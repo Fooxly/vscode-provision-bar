@@ -25,6 +25,8 @@ export function activate(context: vscode.ExtensionContext) {
 		document.configChanged()
 		modules.forEach(m => m.configChanged())
 	}, null, context.subscriptions)
+
+	document.start()
 }
 
 // this method is called when your extension is deactivated

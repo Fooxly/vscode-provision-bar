@@ -1,5 +1,6 @@
 import { window, QuickPickItem } from 'vscode'
 import Document from './document/Document'
+import Translations from '../translations/Translations'
 
 export default class DropdownManager {
   private static _instance: DropdownManager
@@ -11,7 +12,7 @@ export default class DropdownManager {
   public showListNotes(items: QuickPickItem[]) {
     window.showQuickPick(items, {
       canPickMany: false,
-      placeHolder: 'Dropdown placeholder TODO'
+      placeHolder: Translations.getTranslation('dropdownText')
     }).then(v => {
       if(!v) return
       Document.instance.moveToLine(Number(v.label) - 1)

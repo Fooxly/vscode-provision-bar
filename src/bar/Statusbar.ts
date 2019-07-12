@@ -39,7 +39,7 @@ export default class Statusbar extends Provision {
     if(this.existing.has(group)) return this.existing.get(group)
     let pos = this.settings.get('bar.position', 'left')
     let s = window.createStatusBarItem((pos === 'left' ? StatusBarAlignment.Left : StatusBarAlignment.Right), this.settings.get('bar.priority', data.priority))
-    s.tooltip = data.tooltip
+    if(data.tooltip && data.tooltip.length) s.tooltip = data.tooltip
     s.text = data.title
     s.command = 'provision.list.' + group
     this.existing.set(group, s)
