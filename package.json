@@ -42,14 +42,33 @@
 	],
 	"main": "./lib/extension.js",
 	"contributes": {
-		"commands": [{
-			"command": "extension.helloWorld",
-			"title": "Hello World"
-		}],
+		"commands": [
+			{
+				"command": "provision.listall",
+				"title": "Provision: List"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "provision.listall",
+				"key": "ctrl+shift+L",
+				"mac": "cmd+shift+L",
+				"when": "editorTextFocus"
+			}
+		],
 		"configuration": {
 			"type": "object",
 			"title": "Provision settings",
 			"properties": {
+				"provision.bar.updateMethod": {
+					"type": "string",
+					"description": "The method to use for updating the statusbar items",
+					"enum": [
+						"onTextChange",
+						"onDocumentSave"
+					],
+					"default": "onTextChange"
+				},
 				"provision.bar.position": {
 					"type": "string",
 					"description": "The position where in the statusbar the information needs to be shown",
