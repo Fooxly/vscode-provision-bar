@@ -134,7 +134,7 @@ Every line of text provided by this extension can be altered using the `provisio
 
 ## 🖥️ Preview
 
-![Preview](https://github.com/fooxly/vscode-provision-bar/raw/master/assets/sample.png)
+![Preview](https://github.com/fooxly/vscode-provision-bar/raw/master/assets/sample.gif)
 
 ## ❤️ Support our projects
 
