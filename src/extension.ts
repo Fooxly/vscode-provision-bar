@@ -16,19 +16,19 @@ export function activate(context: vscode.ExtensionContext) {
 	modules.push(provisionCommands)
 	statusbar = new Statusbar()
 	modules.push(statusbar)
-
 	modules.forEach(m => m.initialize())
-
 	document.onUpdate(d => {
 		modules.forEach(m => m.onUpdate(d))
 	})
-
+	
 	vscode.workspace.onDidChangeConfiguration(() => {		
+		document.configChanged()
 		modules.forEach(m => m.configChanged())
 	}, null, context.subscriptions)
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() {
+	document.dispose()
 	modules.forEach(m => m.dispose())
 }

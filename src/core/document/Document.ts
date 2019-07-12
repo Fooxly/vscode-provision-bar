@@ -1,4 +1,4 @@
-import { TextEditor, ExtensionContext, Selection, TextEditorRevealType, TextDocument, WorkspaceConfiguration, workspace, window, Position, Range } from 'vscode'
+import { TextEditor, ExtensionContext, Selection, TextEditorRevealType, TextDocument, WorkspaceConfiguration, workspace, window, Position, Range, Event, Disposable } from 'vscode'
 
 export default class Document {
   private static _instance: Document
@@ -9,6 +9,10 @@ export default class Document {
   private context: ExtensionContext
   private settings: WorkspaceConfiguration
   
+  private onUpdateEvent: (data: any) => void = () => { }
+  private windowEvents: Disposable[] = []
+
+
   constructor(context: ExtensionContext) {
     this.context = context
     this.settings = workspace.getConfiguration('provision')
@@ -101,22 +105,53 @@ export default class Document {
   }
 
   public onUpdate(event: (data: any | undefined) => void) {
-    window.onDidChangeActiveTextEditor(e => {
-      if(e && this.currentEditor && e.document === this.currentEditor.document && event) {
-        event(this.getListOfDocumentNotes(e.document))
-      }
-    }, null, this.context.subscriptions)
+    this.onUpdateEvent = event
+    this.setupEvents()
+  }
 
-    workspace.onDidOpenTextDocument(e => {
-      if(this.currentEditor && e === this.currentEditor.document && event) {
-        event(this.getListOfDocumentNotes(e))
-      }
-    }, null, this.context.subscriptions)
+  public configChanged() {
+    this.settings = workspace.getConfiguration('provision')
+    this.setupEvents()
+  }
 
-    workspace.onDidChangeTextDocument(e => {
-      if(this.currentEditor && e.document === this.currentEditor.document && event) {
-        event(this.getListOfDocumentNotes(e.document))
+  public dispose() {
+    this.windowEvents.forEach(e => {
+      e.dispose()
+    })
+    this.windowEvents = []
+  }
+
+  private setupEvents() {
+    this.dispose()
+
+    this.windowEvents.push(window.onDidChangeActiveTextEditor(e => {
+      if(e && this.currentEditor && e.document === this.currentEditor.document && this.onUpdateEvent) {
+        this.onUpdateEvent(this.getListOfDocumentNotes(e.document))
       }
-    }, null, this.context.subscriptions)
+    }, null, this.context.subscriptions))
+
+    this.windowEvents.push(workspace.onDidOpenTextDocument(e => {
+      if(this.currentEditor && e === this.currentEditor.document && this.onUpdateEvent) {
+        this.onUpdateEvent(this.getListOfDocumentNotes(e))
+      }
+    }, null, this.context.subscriptions))
+    switch(this.settings.get<string>('bar.updateMethod', 'onTextChange')) {
+      case 'onTextChange': {
+        this.windowEvents.push(workspace.onDidChangeTextDocument(e => {
+          if(this.currentEditor && e.document === this.currentEditor.document && this.onUpdateEvent) {
+            this.onUpdateEvent(this.getListOfDocumentNotes(e.document))
+          }
+        }, null, this.context.subscriptions))
+        break
+      }
+      case 'onDocumentSave': {
+        this.windowEvents.push(workspace.onDidSaveTextDocument(e => {
+          if(this.currentEditor && e === this.currentEditor.document && this.onUpdateEvent) {
+            this.onUpdateEvent(this.getListOfDocumentNotes(e))
+          }
+        }, null, this.context.subscriptions))
+        break
+      }
+    }
   }
 }
