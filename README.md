@@ -47,7 +47,7 @@ A package by [Fooxly](https://www.fooxly.com).
 
 ### Config
 
-You can customize your keywords for the lens and lots of other stuff in your `settings.json` using the following options:
+You can customize your keywords and lots of other stuff in your `settings.json` using the following options:
 
 | property                             | type      | default               | options                                                  | description |
 | ---                                  | ---       | ---                   | ---                                                      | ----        |
