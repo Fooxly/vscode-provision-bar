@@ -83,6 +83,15 @@
 					"description": "The priority of the statusbar items",
 					"default": 10
 				},
+				"provision.dropdownType": {
+					"type": "string",
+					"enum": [
+						"normal",
+						"compact"
+					],
+					"default": "normal",
+					"description": "The appereance of the dropdown items"
+				},
 				"provision.bar.alwaysShow": {
 					"type": "boolean",
 					"default": false,

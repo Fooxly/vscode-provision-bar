@@ -18,16 +18,32 @@ export default class DropdownManager {
     })
   }
 
-  public convertDocumentItemsToQuickPickItems(items: any[]): QuickPickItem[] {
+  public convertDocumentItemsToQuickPickItems(type: DropdownType, items: any[]): QuickPickItem[] {
     let r: QuickPickItem[] = []
     for(let n of items) {
-      // TODO: show the correct type of formatting for the dropdown items
-      r.push({
-        label: (n.position.line + 1).toString(),
-        detail: n.text,
-        description: n.keyword
-      })
+      switch(type) {
+        case DropdownType.NORMAL: {
+          r.push({
+            label: (n.position.line + 1).toString(),
+            detail: n.text,
+            description: n.keyword
+          })
+          break
+        }
+        case DropdownType.COMPACT: {
+          r.push({
+            label: (n.position.line + 1).toString(),
+            description: n.text
+          })
+          break
+        }
+      }
     }
     return r
   }
+}
+
+export enum DropdownType {
+  NORMAL = 'normal',
+  COMPACT = 'compact'
 }

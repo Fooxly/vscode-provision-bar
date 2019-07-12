@@ -50,9 +50,10 @@ export default class Document {
 
         while(match = regex.exec(text)) {
           let pos: Position = doc.positionAt(match.index)
+          let text = doc.lineAt(pos).text
           items.push({
             keyword: item.keyword,
-            text: doc.lineAt(pos).text,
+            text: text.slice(pos.character, text.length).trim(),
             position: pos,
             range: new Range(pos, doc.positionAt(match.index + match[0].length))
           })

@@ -1,7 +1,7 @@
 import Provision from './Provision'
 import { Disposable, ExtensionContext, commands } from 'vscode'
 import Document from './document/Document'
-import DropdownManager from './DropdownManager'
+import DropdownManager, { DropdownType } from './DropdownManager'
 
 export default class ProvisionCommands extends Provision {
   private commands: Map<string, Disposable> = new Map<string, Disposable>()
@@ -21,17 +21,17 @@ export default class ProvisionCommands extends Provision {
       this.registerCommand('provision.listall', () => {
         let notes = Document.instance.getListOfDocumentNotes()
         let i = []
-        if(!notes) return
+        if(!notes) return // TODO: warn the user that there are no notes found
         for(let n of notes) {
           i.push(...n.items)
         }
-        if(i.length === 0) return
-        DropdownManager.instance.showListNotes(DropdownManager.instance.convertDocumentItemsToQuickPickItems(i))
+        if(i.length === 0) return // TODO: warn the user that there are no notes found
+        DropdownManager.instance.showListNotes(DropdownManager.instance.convertDocumentItemsToQuickPickItems(this.settings.get('dropdownType', DropdownType.NORMAL), i))
       })
       this.registerCommand('provision.list.' + groupID, () => {
         let notes = Document.instance.getListOfDocumentNotes(undefined, [group])
         if(!notes || !notes[0].items.length) return // TODO: warn the user that there are no notes found
-        DropdownManager.instance.showListNotes(DropdownManager.instance.convertDocumentItemsToQuickPickItems(notes[0].items))
+        DropdownManager.instance.showListNotes(DropdownManager.instance.convertDocumentItemsToQuickPickItems(this.settings.get('dropdownType', DropdownType.NORMAL), notes[0].items))
       })
     }
     return
