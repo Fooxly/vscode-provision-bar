@@ -45,7 +45,122 @@
 		"commands": [{
 			"command": "extension.helloWorld",
 			"title": "Hello World"
-		}]
+		}],
+		"configuration": {
+			"type": "object",
+			"title": "Provision settings",
+			"properties": {
+				"provision.bar.position": {
+					"type": "string",
+					"description": "The position where in the statusbar the information needs to be shown",
+					"enum": [
+						"left",
+						"right"
+					],
+					"default": "left"
+				},
+				"provision.bar.alwaysShow": {
+					"type": "boolean",
+					"default": false,
+					"description": "Show the statusbar items when there are no notes"
+				},
+				"provision.instant": {
+					"type": "boolean",
+					"default": true,
+					"description": "Jump to a note instead of showing the dropdown when there is only one"
+				},
+				"provision.notes": {
+					"type": "array",
+					"description": "",
+					"items": {
+						"type": "object",
+						"description": "A defined provision group",
+						"properties": {
+							"keywords": {
+								"type": "array",
+								"description": "The keywords that belong to this group",
+								"items": {
+									"type": "object",
+									"description": "A specific keyword option with settings",
+									"properties": {
+										"keyword": {
+											"type": "string",
+											"description": "The keyword that needs to be defined"
+										},
+										"useColons": {
+											"type": "boolean",
+											"description": "If the keyword needs to have a colon after it for it to count",
+											"default": true
+										},
+										"caseSensitive": {
+											"type": "boolean",
+											"description": "If the keyword needs to be case sensitive",
+											"default": true
+										}
+									}
+								}
+							},
+							"tooltip": {
+								"type": "string",
+								"description": "The tooltip that will be shown when you hover over the item"
+							},
+							"text": {
+								"type": [
+									"object",
+									"string"
+								],
+								"description": "The text that will be shown",
+								"properties": {
+									"one": {
+										"type": "string",
+										"description": "The text that will be shown when there is only 1 item"
+									},
+									"multiple": {
+										"type": "string",
+										"description": "The text that will be shown when there are 0 or more than 1 items"
+									}
+								}
+							}
+						}
+					},
+					"default": [
+						{
+							"keywords": [
+								{
+									"keyword": "TODO",
+									"useColons": true,
+									"caseSensitive": true
+								},
+								{
+									"keyword": "FIXME",
+									"useColons": true,
+									"caseSensitive": true
+								}
+							],
+							"tooltip": "These are all the 'TODO' and 'FIXME' notes in this file",
+							"text": {
+								"one": "📝 {0} TODO",
+								"multiple": "📝 {0} TODOs"
+							}
+						},
+						{
+							"keywords": [
+								{
+									"keyword": "NOTE",
+									"useColons": true,
+									"caseSensitive": true
+								}
+							],
+							"tooltip": "These are all the notes in this file",
+							"text": {
+								"one": "📝 {0} Note",
+								"multiple": "📝 {0} Notes"
+							}
+						}
+					]
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
