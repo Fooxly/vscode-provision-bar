@@ -61,6 +61,7 @@ export default class Document {
       }
       results.push({
         group: groupID,
+        priority: group.priority,
         title: this.createGroupTitle(group.text, items.length),
         tooltip: group.tooltip,
         items

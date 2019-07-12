@@ -78,11 +78,6 @@
 					],
 					"default": "left"
 				},
-				"provision.bar.priority": {
-					"type": "number",
-					"description": "The priority of the statusbar items",
-					"default": 10
-				},
 				"provision.dropdownType": {
 					"type": "string",
 					"enum": [
@@ -133,6 +128,11 @@
 									}
 								}
 							},
+							"priority": {
+								"type": "number",
+								"description": "The priority of the statusbar items",
+								"default": 10
+							},
 							"tooltip": {
 								"type": "string",
 								"description": "The tooltip that will be shown when you hover over the item"
@@ -170,6 +170,7 @@
 									"caseSensitive": true
 								}
 							],
+							"priority": 10,
 							"tooltip": "These are all the 'TODO' and 'FIXME' notes in this file",
 							"text": {
 								"one": "📝 {0} TODO",
@@ -184,6 +185,7 @@
 									"caseSensitive": true
 								}
 							],
+							"priority": 9,
 							"tooltip": "These are all the notes in this file",
 							"text": {
 								"one": "📝 {0} Note",
