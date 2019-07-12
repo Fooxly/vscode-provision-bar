@@ -78,6 +78,11 @@
 					],
 					"default": "left"
 				},
+				"provision.bar.priority": {
+					"type": "number",
+					"description": "The priority of the statusbar items",
+					"default": 10
+				},
 				"provision.bar.alwaysShow": {
 					"type": "boolean",
 					"default": false,

@@ -1,6 +1,7 @@
 import Provision from './Provision'
 import { Disposable, ExtensionContext, commands } from 'vscode'
 import Document from './document/Document'
+import DropdownManager from './DropdownManager'
 
 export default class ProvisionCommands extends Provision {
   private commands: Map<string, Disposable> = new Map<string, Disposable>()
@@ -12,9 +13,23 @@ export default class ProvisionCommands extends Provision {
   }
 
   public initialize(): Disposable[] | undefined {
-    console.log(Document.instance.getListOfDocumentNotes())
-
+    for(let group of this.settings.get<any[]>('notes' ,[])) {
+      let groupID = ''
+      for(let item of group.keywords) {
+        groupID += item.keyword
+      }
+      this.registerCommand('provision.list.' + groupID, () => {
+        let notes = Document.instance.getListOfDocumentNotes(undefined, [group])
+        if(!notes) return
+        DropdownManager.instance.showListNotes(DropdownManager.instance.convertDocumentItemsToQuickPickItems(notes[0].items))
+      })
+    }
     return
+  }
+
+  public configChanged() {
+    super.configChanged()
+    // set all the commands again
   }
 
   public dispose() {

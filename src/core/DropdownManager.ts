@@ -21,11 +21,12 @@ export default class DropdownManager {
 
   public convertDocumentItemsToQuickPickItems(items: any[]): QuickPickItem[] {
     let r: QuickPickItem[] = []
-    for(let a in items) {
-      // r.push({
-      //   label: a.index,
-      //   detail: 
-      // })
+    for(let n of items) {
+      r.push({
+        label: (n.position.line + 1).toString(),
+        detail: n.text,
+        description: n.keyword
+      })
     }
     return r
   }

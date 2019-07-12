@@ -18,15 +18,15 @@ export default class Document {
   }
 
 
-  public getListOfDocumentNotes(document?: TextDocument): any[] | undefined {
+  public getListOfDocumentNotes(document?: TextDocument, groups?: any[]): any[] | undefined {
     if(!document && !this.currentEditor) return
     let doc: TextDocument | undefined = (document ? document : this.currentEditor ? this.currentEditor.document : undefined)
     if(!doc) return
-    
+    let notes = (groups ? groups : this.settings.get<any[]>('notes' ,[]))
     let results: any[] = []
     let text: string = doc.getText()
     if(text.length === 0) return
-    for(let group of this.settings.get<any[]>('notes' ,[])) {
+    for(let group of notes) {
       let items: any[] = []
       let groupID = ''
 

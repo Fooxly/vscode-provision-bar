@@ -15,6 +15,19 @@ export default class Statusbar extends Provision {
     }
   }
 
+  public configChanged() {
+    super.configChanged()
+    this.existing.forEach((val, key) => {
+      this.removeStatusbarItem(key)
+    })
+  }
+
+  public dispose() {
+    this.existing.forEach(i => {
+      i.dispose()
+    })
+  }
+
   private removeStatusbarItem(group: string) {
     let g = this.existing.get(group)
     if(!g) return
@@ -24,9 +37,11 @@ export default class Statusbar extends Provision {
 
   private createStatusbarItem(group: string, data: any): StatusBarItem | undefined {
     if(this.existing.has(group)) return this.existing.get(group)
-    let s = window.createStatusBarItem(StatusBarAlignment.Left, 1)
+    let pos = this.settings.get('bar.position', 'left')
+    let s = window.createStatusBarItem((pos === 'left' ? StatusBarAlignment.Left : StatusBarAlignment.Right), this.settings.get('bar.priority', 10))
     s.tooltip = data.tooltip
     s.text = data.title
+    s.command = 'provision.list.' + group
     this.existing.set(group, s)
     s.show()
     return s
