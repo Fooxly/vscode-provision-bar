@@ -36,6 +36,18 @@ export default class ProvisionCommands extends Provision {
         if(notes[0].items.length === 1 && this.settings.get('instant', true)) return Document.instance.moveToLine(notes[0].items[0].position.line) 
         DropdownManager.instance.showListNotes(DropdownManager.instance.convertDocumentItemsToQuickPickItems(this.settings.get('dropdownType', DropdownType.NORMAL), notes[0].items))
       })
+
+      this.registerCommand('provision.nextNote', () => {
+        let p = Document.instance.getNextNoteLocation()
+        if(p === undefined) return window.showInformationMessage(Translations.getTranslation('noNoteFound'))  
+        Document.instance.moveToLine(p)
+      })
+
+      this.registerCommand('provision.lastNote', () => {
+        let p = Document.instance.getLastNoteLocation()
+        if(p === undefined) return window.showInformationMessage(Translations.getTranslation('noNoteFound'))  
+        Document.instance.moveToLine(p)
+      })
     }
     return
   }

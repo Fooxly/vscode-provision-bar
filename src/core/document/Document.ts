@@ -97,6 +97,38 @@ export default class Document {
     this.currentEditor.revealRange(r, TextEditorRevealType.InCenter)
   }
 
+  public getNextNoteLocation(): number | undefined {
+    if(!this.currentEditor) return
+    let notes = this.getListOfDocumentNotes()
+    let i: any[] = []
+    if(!notes) return
+    let c = this.currentEditor.selection.anchor.line
+    let closest: number | undefined
+    for(let n of notes) {
+      for(let i of n.items) {
+        if(!closest && i.position.line > c) closest = i.position.line
+        if(!!closest && (i.position.line < closest && i.position.line > c)) closest = i.position.line
+      }
+    }
+    return closest
+  }
+
+  public getLastNoteLocation(): number | undefined {
+    if(!this.currentEditor) return
+    let notes = this.getListOfDocumentNotes()
+    let i: any[] = []
+    if(!notes) return
+    let c = this.currentEditor.selection.anchor.line
+    let closest: number | undefined
+    for(let n of notes) {
+      for(let i of n.items) {
+        if(!closest && i.range.start.line < c) closest = i.range.start.line
+        if(!!closest && (i.range.start.line > closest && i.range.start.line < c)) closest = i.range.start.line
+      }
+    }
+    return closest
+  }
+
   // event listeners
   private registerListeners() {
     window.onDidChangeActiveTextEditor(e => {

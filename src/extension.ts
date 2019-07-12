@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 import Document from './core/document/Document'
 import Statusbar from './bar/Statusbar'
 import ProvisionCommands from './core/ProvisionCommands'
-import Provision from './core/Provision';
+import Provision from './core/Provision'
 
 var document: Document
 var provisionCommands: ProvisionCommands
@@ -27,6 +27,11 @@ export function activate(context: vscode.ExtensionContext) {
 	}, null, context.subscriptions)
 
 	document.start()
+	
+	if(!vscode.extensions.getExtension('fooxly.provision-lens')) {
+		vscode.commands.executeCommand('setContext', 'provision.bar.canShowContext', true)
+		vscode.commands.executeCommand('setContext', 'provision.bar.canUseCommands', true)
+	}
 }
 
 // this method is called when your extension is deactivated

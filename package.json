@@ -46,8 +46,46 @@
 			{
 				"command": "provision.listall",
 				"title": "Provision: List"
+			},
+			{
+				"when": "provision.bar.canShowContext&&provision.bar.canUseCommands",
+				"command": "provision.lastNote",
+				"title": "Provision: Previous Note"
+			},
+			{
+				"when": "provision.bar.canShowContext&&provision.bar.canUseCommands",
+				"command": "provision.nextNote",
+				"title": "Provision: Next Note"
 			}
 		],
+		"menus": {
+			"commandPalette": [
+				{
+					"when": "provision.bar.canUseCommands",
+					"command": "provision.listall"
+				},
+				{
+					"when": "provision.bar.canShowContext&&provision.bar.canUseCommands",
+					"command": "provision.nextNote"
+				},
+				{
+					"when": "provision.bar.canShowContext&&provision.bar.canUseCommands",
+					"command": "provision.lastNote"
+				}
+			],
+			"editor/context": [
+				{
+					"when": "provision.bar.canShowContext",
+					"command": "provision.lastNote",
+					"group": "provision@1"
+				},
+				{
+					"when": "provision.bar.canShowContext",
+					"command": "provision.nextNote",
+					"group": "provision@2"
+				}
+			]
+		},
 		"keybindings": [
 			{
 				"command": "provision.listall",
@@ -111,7 +149,7 @@
 						}
 					},
 					"default": {
-						"noNoteFound": "There are no notes past the current point",
+						"noNoteFound": "No note found",
 						"dropdownText": "Notes found:"
 					}
 				},

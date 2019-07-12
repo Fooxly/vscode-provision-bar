@@ -2,7 +2,7 @@ import { workspace } from 'vscode'
 
 export default class Translations {
   public static DEFAULT_TRANSLATIONS = {
-    noNoteFound: 'There are no notes past the current point',
+    noNoteFound: 'No note found',
     dropdownText: 'Notes found:'
   }
 
