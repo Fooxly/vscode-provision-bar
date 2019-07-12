@@ -1,0 +1,64 @@
+{
+	"name": "provision-bar",
+	"displayName": "provision-bar",
+	"description": "",
+	"author": "Fooxly",
+	"publisher": "Fooxly",
+	"license": "MIT",
+	"icon": "assets/icon.png",
+	"keywords": [
+		"fooxly",
+		"vscode",
+		"code",
+		"todo",
+		"fixme",
+		"note",
+		"notes",
+		"keyword",
+		"statusbar"
+	],
+	"homepage": "https://github.com/Fooxly/vscode-provision-bar",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Fooxly/vscode-provision-bar.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Fooxly/vscode-provision-bar/issues",
+		"email": "bugs@fooxly.com"
+	},
+	"galleryBanner": {
+		"color": "#272729",
+		"theme": "dark"
+	},
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./lib/extension.js",
+	"contributes": {
+		"commands": [{
+			"command": "extension.helloWorld",
+			"title": "Hello World"
+		}]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
