@@ -1,65 +1,144 @@
-# provision-bar README
+<p align="center">
+  <a title="Learn more about the Provision Bar" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">
+    <img src="https://github.com/fooxly/vscode-provision-bar/raw/master/assets/icon_banner.png" alt="Provision Bar Logo" width="50%" />
+  </a>
+</p><br/><br/>
 
-This is the README for your extension "provision-bar". After writing up a brief description, we recommend including the following sections.
+```
+ext install fooxly.provision-bar
+```
 
-## Features
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.provision-bar.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/fooxly.provision-bar.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar)
+[![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.provision-bar.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+# 🚀 Recently Added
 
-For example if there is an image subfolder under your extension project workspace:
+* Options for the position and priority of the statusbar items
+* Show all the keywords of the current files in a dropdown
+* Localization support
+* `Next Note` and `Previous Note` commands (also available in context menu) based on the current cursor position
 
-\!\[feature X\]\(images/feature-x.png\)
+<p align="center">
+  <img src="https://github.com/fooxly/vscode-provision-bar/raw/master/assets/list_sample.jpg" alt="Provision Bar Example" />
+</p>
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+# 🔍 Provision Bar
 
-## Requirements
+The `Provision Bar` provides a simple way to view all of your `notes` in your workspace based on keywords. You'll find one or more items at the statusbar for each file with a quick overview of all your notes.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+A package by [Fooxly](https://www.fooxly.com).
 
-## Extension Settings
+## 📕 Features
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+* Overview of the keywords provided in your settings.json
+* **Jump** between notes by using the context menu or commands
+* **View** all of your notes in a long and complex file in just seconds
 
-For example:
+## 📐 Configuration
 
-This extension contributes the following settings:
+### Commands
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+* `Provision: List` Shows all the notes in the current file
+* `Provision: Previous Note` Move to the **previous** note based on your cursor position
+* `Provision: Next Note` Move to the **next** note based on your cursor position
 
-## Known Issues
+### Config
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+You can customize your keywords for the lens and lots of other stuff in your `settings.json` using the following options:
 
-## Release Notes
+| property                             | type      | default               | options                                                  | description |
+| ---                                  | ---       | ---                   | ---                                                      | ----        |
+| provision.notes                      | object    | *check below*         | [notes](#Notes)                                          | Object with keywords and settings to use |
+| provision.translations               | object    | *check below*         | [translations](#Translations)                            | Object with translations |
+| provision.instant                    | boolean   | true                  | true, false                                              | Jump to a note instead of showing the dropdown when there is only one |
+| provision.bar.alwaysShow             | boolean   | false                 | true, false                                              | Show the statusbar item(s) when there are no notes |
+| provision.dropdownType               | enum      | normal                | compact, normal                                          | The appereance of the dropdown items |
+| provision.bar.position               | enum      | left                  | left, right                                              | The position where in the statusbar the information needs to be shown |
+| provision.bar.updateMethod           | enum      | onTextChange          | onTextChange, onDocumentSave                             | The method to use for updating the statusbar items |
 
-Users appreciate release notes as you update your extension.
+#### Notes
 
-### 1.0.0
+All keywords need to be defined using the `provision.notes` property. You can customize keywords using the following options:
 
-Initial release of ...
+| property        | type            | default       | options                                                                     | description |
+| ---             | ---             | ---           | ---                                                                         | ---         |
+| keywords        | array           | *check below* | [keywords](#Keywords)                                                       | All the keywords for the group |
+| priority        | number          | *check below* | -                                                                           | The priority the statusbar item will get (higher is more important) |
+| text            | object, string  | *check below* | `string` or `{ one: string, multiple: string }`                             | Text for one or multiple results |
+| tooltip         | string          | *check below* | -                                                                           | Description used by tooltips |
 
-### 1.0.1
+##### Keywords
+| property        | type            | default       | options                                                                     | description |
+| ---             | ---             | ---           | ---                                                                         | ---         |
+| keyword         | string          | *check below* | -                                                                           | The keyword that needs to be searched for |
+| useColons       | boolean         | true          | true, false                                                                 | Use a `:` to define |
+| caseSensitive   | boolean         | true          | true, false                                                                 | Use case sensitive detection |
 
-Fixed issue #.
+**Default**:
 
-### 1.1.0
+```json
+"provision.notes": [
+  {
+    "keywords": [
+      {
+        "keyword": "TODO",
+        "useColons": true,
+        "caseSensitive": true
+      },
+      {
+        "keyword": "FIXME",
+        "useColons": true,
+        "caseSensitive": true
+      }
+    ],
+    "priority": 10,
+    "tooltip": "These are all the 'TODO' and 'FIXME' notes in this file",
+    "text": {
+      "one": "📝 {0} TODO",
+      "multiple": "📝 {0} TODOs"
+    }
+  },
+  {
+    "keywords": [
+      {
+        "keyword": "NOTE",
+        "useColons": true,
+        "caseSensitive": true
+      }
+    ],
+    "priority": 9,
+    "tooltip": "These are all the notes in this file",
+    "text": {
+      "one": "📝 {0} Note",
+      "multiple": "📝 {0} Notes"
+    }
+  }
+]
+```
 
-Added features X, Y, and Z.
+#### Translations
 
------------------------------------------------------------------------------------------------------------
+Every line of text provided by this extension can be altered using the `provision.translations` property.
 
-## Working with Markdown
+**Default**:
 
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+```json
+"provision.translations": {
+  "noNoteFound": "No note found",
+  "dropdownText": "Notes found:"
+}
+```
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
+## 🖥️ Preview
 
-### For more information
+![Preview](https://github.com/fooxly/vscode-provision-bar/raw/master/assets/sample.png)
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+## ❤️ Support our projects
 
-**Enjoy!**
+You can support us by donating through [BuyMeACoffee](https://www.buymeacoffee.com/fooxly) or [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE).
+
+[![BuyMeACoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/fooxly)&nbsp;&nbsp;&nbsp;
+[![PayPal](https://i.imgur.com/T3AmGss.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE)

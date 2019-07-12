@@ -128,7 +128,7 @@
 				"provision.bar.alwaysShow": {
 					"type": "boolean",
 					"default": false,
-					"description": "Show the statusbar items when there are no notes"
+					"description": "Show the statusbar item(s) when there are no notes"
 				},
 				"provision.instant": {
 					"type": "boolean",
