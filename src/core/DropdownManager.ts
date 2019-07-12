@@ -9,7 +9,6 @@ export default class DropdownManager {
   }
 
   public showListNotes(items: QuickPickItem[]) {
-    
     window.showQuickPick(items, {
       canPickMany: false,
       placeHolder: 'Dropdown placeholder TODO'
@@ -22,6 +21,7 @@ export default class DropdownManager {
   public convertDocumentItemsToQuickPickItems(items: any[]): QuickPickItem[] {
     let r: QuickPickItem[] = []
     for(let n of items) {
+      // TODO: show the correct type of formatting for the dropdown items
       r.push({
         label: (n.position.line + 1).toString(),
         detail: n.text,

@@ -18,9 +18,19 @@ export default class ProvisionCommands extends Provision {
       for(let item of group.keywords) {
         groupID += item.keyword
       }
+      this.registerCommand('provision.listall', () => {
+        let notes = Document.instance.getListOfDocumentNotes()
+        let i = []
+        if(!notes) return
+        for(let n of notes) {
+          i.push(...n.items)
+        }
+        if(i.length === 0) return
+        DropdownManager.instance.showListNotes(DropdownManager.instance.convertDocumentItemsToQuickPickItems(i))
+      })
       this.registerCommand('provision.list.' + groupID, () => {
         let notes = Document.instance.getListOfDocumentNotes(undefined, [group])
-        if(!notes) return
+        if(!notes || !notes[0].items.length) return // TODO: warn the user that there are no notes found
         DropdownManager.instance.showListNotes(DropdownManager.instance.convertDocumentItemsToQuickPickItems(notes[0].items))
       })
     }
