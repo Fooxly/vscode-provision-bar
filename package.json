@@ -96,7 +96,7 @@
 		],
 		"configuration": {
 			"type": "object",
-			"title": "Provision settings",
+			"title": "Provision",
 			"properties": {
 				"provision.bar.updateMethod": {
 					"type": "string",
