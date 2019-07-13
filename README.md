@@ -1,6 +1,6 @@
 <p align="center">
   <a title="Learn more about the Provision Bar" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">
-    <img src="https://github.com/Fooxly/vscode-provision-bar/raw/master/assets/icon_banner.png" alt="Provision Bar Logo" width="50%" />
+    <img src="assets/icon_banner.png" alt="Provision Bar Logo" width="50%" />
   </a>
 </p><br/><br/>
 
