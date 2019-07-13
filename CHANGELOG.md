@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.3] - 2019-07-13
+### Changed
+- New logo for the provision bar marketplace icon
+
 ## [1.0.0] - 2019-07-12
 ### Added
 - Option for when to update the statusbar items
