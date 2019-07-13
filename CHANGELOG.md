@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.4] - 2019-07-13
+### Changed
+- Core optimizations
+- Removed an issue where the listall functions would be created multiple times
+
 ## [1.0.3] - 2019-07-13
 ### Changed
 - New logo for the provision bar marketplace icon
