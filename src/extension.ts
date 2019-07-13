@@ -1,32 +1,35 @@
 import * as vscode from 'vscode'
-import Document from './core/document/Document'
 import Statusbar from './bar/Statusbar'
-import ProvisionCommands from './core/ProvisionCommands'
-import Provision from './core/Provision'
+import Provision from './core/src/Provision'
+import Core from './core/src/Core'
+import DropdownCore from './dropdown/src/DropdownCore'
 
-var document: Document
-var provisionCommands: ProvisionCommands
 var statusbar: Statusbar
+
+var core: Core
+var dropdownCore: DropdownCore
 
 const modules: Provision[] = []
 
 export function activate(context: vscode.ExtensionContext) {
-	document = new Document(context)
-	provisionCommands = new ProvisionCommands(context)
-	modules.push(provisionCommands)
+	core = new Core(context)
+	dropdownCore = new DropdownCore(context)
+
 	statusbar = new Statusbar()
 	modules.push(statusbar)
-	modules.forEach(m => m.initialize())
-	document.onUpdate(d => {
+
+	
+	core.onUpdate(d => {
 		modules.forEach(m => m.onUpdate(d))
 	})
 	
-	vscode.workspace.onDidChangeConfiguration(() => {		
-		document.configChanged()
+	vscode.workspace.onDidChangeConfiguration(() => {
+		dropdownCore.configChanged()
 		modules.forEach(m => m.configChanged())
 	}, null, context.subscriptions)
-
-	document.start()
+	
+	modules.forEach(m => m.initialize())
+	core.start()
 	
 	if(!vscode.extensions.getExtension('fooxly.provision-lens')) {
 		vscode.commands.executeCommand('setContext', 'provision.bar.canShowContext', true)
@@ -36,6 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 // this method is called when your extension is deactivated
 export function deactivate() {
-	document.dispose()
+	core.dispose()
+	dropdownCore.dispose()
 	modules.forEach(m => m.dispose())
 }

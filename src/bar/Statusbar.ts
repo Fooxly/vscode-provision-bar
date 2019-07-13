@@ -1,4 +1,4 @@
-import Provision from '../core/Provision'
+import Provision from '../core/src/Provision'
 import { StatusBarAlignment, window, StatusBarItem } from 'vscode'
 
 export default class Statusbar extends Provision {
