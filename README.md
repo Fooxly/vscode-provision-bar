@@ -22,7 +22,7 @@ ext install fooxly.provision-bar
 * `Next Note` and `Previous Note` commands (also available in context menu) based on the current cursor position
 
 <p align="center">
-  <img src="https://github.com/Fooxly/vscode-provision-bar/raw/master/assets/list_sample.jpg" alt="Provision Bar Example" />
+  <img src="assets/list_sample.jpg" alt="Provision Bar Example" />
 </p>
 
 # 🔍 Provision Bar
@@ -134,7 +134,7 @@ Every line of text provided by this extension can be altered using the `provisio
 
 ## 🖥️ Preview
 
-![Preview](https://github.com/Fooxly/vscode-provision-bar/raw/master/assets/sample.gif)
+![Preview](assets/sample.gif)
 
 ## ❤️ Support our projects
 
