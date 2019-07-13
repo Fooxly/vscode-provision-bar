@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 import Statusbar from './bar/Statusbar'
 import Provision from './core/src/Provision'
 import Core from './core/src/Core'
-import DropdownCore from './dropdown/src/DropdownCore'
+import DropdownCore from './core_dropdown/src/DropdownCore'
 
 var statusbar: Statusbar
 
@@ -30,6 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
 	
 	modules.forEach(m => m.initialize())
 	core.start()
+	dropdownCore.start()
 	
 	if(!vscode.extensions.getExtension('fooxly.provision-lens')) {
 		vscode.commands.executeCommand('setContext', 'provision.bar.canShowContext', true)

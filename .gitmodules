@@ -1,3 +1,6 @@
 [submodule "src/core"]
 	path = src/core
 	url = https://gitlab.com/fooxly/provision/provision-core.git
+[submodule "src/core_dropdown"]
+	path = src/core_dropdown
+	url = https://gitlab.com/fooxly/provision/provision-dropdown.git
