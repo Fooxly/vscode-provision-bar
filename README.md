@@ -70,7 +70,7 @@ Check out our [Getting Started](HELP.md) guide for more information.
 
 ## 📕 &nbsp;Commands
 
-* `Provision: Help` Instructions on how to create a new keyword or group
+* `Help: Provision` Instructions on how to create a new keyword or group
 * `Provision: List` Show all notes in the current file
 
 ## ⚙️ &nbsp;Available Settings
