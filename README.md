@@ -110,6 +110,7 @@ Check out our [Getting Started](HELP.md) guide for more information.
   ```json
   "provision.keywords": {
     "NOTE": {
+      "keyword": "NOTE",
       "caseSensitive": true,
       "includesColon": true,
       "title": {
