@@ -86,14 +86,14 @@
 				},
 				"provision.bar.showWhenEmpty": {
 					"type": "boolean",
-					"title": "Keyword groups",
-					"description": "Keyword groups to use",
+					"title": "Show statusbar item when empty",
+					"description": "Show statusbar items when the amount of items is 0",
 					"default": "false"
 				},
 				"provision.bar.position": {
 					"type": "string",
 					"title": "Position of the items inside the statubar",
-					"description": "The position where in the statusbar the information needs to be shown",
+					"description": "The position where in the statusbar the items needs to be shown",
 					"enum": [
 						"left",
 						"right"

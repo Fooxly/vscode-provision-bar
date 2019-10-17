@@ -52,7 +52,7 @@ ext install fooxly.provision-bar
 
 > A package by [Fooxly](https://www.fooxly.com).
 
-**Provision: Lens** provides an **easy to use** and **highly customizable** lens above functions & classes or at the top of file,
+**Provision: Bar** provides an **easy to use** and **highly customizable** items to your statusbar
 to view the notes you or others in your team have left. This will **save you lots of time** searching and unfolding functions
 and/or classes to determine if there are any notes left.
 
@@ -60,74 +60,18 @@ and/or classes to determine if there are any notes left.
 
 * Create custom keywords with plenty of customization options
 * Group keywords together
-* Show pop-ups with every note inside a file/class/function
+* Show pop-ups with every note inside a file
 * Jump directly to a note
 * View all of your notes in a long and complex file **instantly**
-* Jump to the next or previous note in a file
 
 ## 📙 &nbsp;How to use
 
-### Setting up Keywords and Groups
-
-You can create a new keyword by following the steps below and configuring them inside your `settings.json`.
-
-> **Note**: Other Provision extensions might require other properties inside your keyword or group object. For an up-to-date version of the manual use the `Provision: Help` command or view the manual [here](https://developers.fooxly.com/extensions/provision/manual).
-
-#### Step 1
-
-Add a new object to your `provision.keywords` configuration. The following properties can be set:
-
-```json
-"provision.keywords": [{
-  "TODO": {
-    "keyword": "TODO",
-    "caseSensitive": true,
-    "includesColon": true
-  }
-}]
-```
-
-#### Step 2
-
-##### Single Keyword
-
-Add the `title` property to your newly created keyword.
-
-If you have done this the keyword is correctly added to your setttings.
-
-```json
-  "TODO": {
-    "keyword": "TODO",
-    "caseSensitive": true,
-    "includesColon": true,
-    "title": {
-      "1": "{0} TODO",
-      "*": "{0} TODO's"
-    }
-  }
-```
-
-##### Grouped Keyword
-
-Add your newly created keyword to an existing group (or create a new one).
-This is done by adding the following object to your `provision.groups` setting.
-
-```json
-  {
-    "keywords": ["TODO", "FIXME"],
-    "title": {
-      "1": "{0} TODO",
-      "*": "{0} TODO's"
-    }
-  }
-```
+Check out our [Getting Started](HELP.md) guide for more information.
 
 ## 📕 &nbsp;Commands
 
 * `Provision: Help` Instructions on how to create a new keyword or group
 * `Provision: List` Show all notes in the current file
-* `Provision: Previous Note` Move to the **previous** note based on your cursor position
-* `Provision: Next Note` Move to the **next** note based on your cursor position
 
 ## ⚙️ &nbsp;Available Settings
 
@@ -151,15 +95,15 @@ This is done by adding the following object to your `provision.groups` setting.
 
 * `provision.bar.position`: The position for the statusbar items (`left` by default)
 
-```json
-"provision.bar.position": <"left"|"right">
-```
+  ```json
+  "provision.bar.position": <"left"|"right">
+  ```
 
 * `provision.bar.priority`: The priority given to the statusbar items (`1` by default)
 
-```json
-"provision.bar.priority": <number>
-```
+  ```json
+  "provision.bar.priority": <number>
+  ```
 
 * `provision.keywords`: Keywords to look for with a specific configuration
 
@@ -171,7 +115,8 @@ This is done by adding the following object to your `provision.groups` setting.
       "title": {
         "1": "{0} Note",
         "*": "{0} Notes"
-      }
+      },
+      "tooltip": "All the notes found in this file"
     }
   }]
   ```
@@ -179,6 +124,7 @@ This is done by adding the following object to your `provision.groups` setting.
   * `caseSensitive` *(optional)*: Whether or not the keyword needs to be case sensitive. (`true` by default)
   * `includesColon` *(optional)*: Whether or not the keyword is only valid with a colon sign suffix. (`true` by default)
   * `title` *(optional)*: An object with the titles used for the amount of notes. `*` is used for every other amount.
+  * `tooltip` *(optional)*: An string shown when hovering on the statusbar items.
 
 * `provision.groups`: Keyword groups to use
 
@@ -188,14 +134,14 @@ This is done by adding the following object to your `provision.groups` setting.
     "title": {
       "1": "{0} TODO",
       "*": "{0} TODO's"
-    }
+    },
+    "tooltip": "All the todo's and fixme's found in this file"
   }]
   ```
 
   * `keywords`: Array of keywords to group.
   * `title`: An object with the titles used for the amount of notes. `*` is used for every other amount.
-
-<!-- TODO: add examples -->
+  * `tooltip`: An string shown when hovering on the statusbar items.
 
 ## License
 
