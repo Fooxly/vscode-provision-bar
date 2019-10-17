@@ -18,7 +18,7 @@ export default class Hub extends Main implements DocumentListener {
     // Provision wide commands
     commands.getCommands().then(e => {
       if(e.indexOf('provision.help') === -1) {
-        this.registerCommand('provision.help', args => BaseCommands.Help(this, args), false)
+        this.registerCommand('provision.help', () => BaseCommands.Help(), false)
         this.registerCommand('provision.list', () => BaseCommands.List(this, this.data), false)
       }
     })
