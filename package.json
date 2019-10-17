@@ -45,6 +45,9 @@
 		"commands": [{
 			"command": "provision.help",
 			"title": "Help: Provision"
+		},{
+			"command": "provision.list",
+			"title": "Provision: List"
 		}],
 		"configuration": {
 			"type": "object",
