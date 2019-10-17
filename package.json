@@ -1,0 +1,127 @@
+{
+	"name": "vscode-provision-bar",
+	"displayName": "Provision Bar",
+	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
+	"author": "Fooxly",
+	"publisher": "Fooxly",
+	"license": "MIT",
+	"icon": "assets/icon.png",
+	"keywords": [
+		"fooxly",
+		"vscode",
+		"code",
+		"todo",
+		"fixme",
+		"note",
+		"notes",
+		"keyword",
+		"statusbar"
+	],
+	"homepage": "https://github.com/Fooxly/vscode-provision-bar",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Fooxly/vscode-provision-bar.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Fooxly/vscode-provision-bar/issues",
+		"email": "bugs@fooxly.com"
+	},
+	"galleryBanner": {
+		"color": "#272729",
+		"theme": "dark"
+	},
+	"version": "0.0.2",
+	"engines": {
+		"vscode": "^1.39.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [{
+			"command": "provision.help",
+			"title": "Help: Provision"
+		}],
+		"configuration": {
+			"type": "object",
+			"title": "Provision",
+			"properties": {
+				"provision.moveOnSingle": {
+					"type": "boolean",
+					"title": "Move On Single",
+					"description": "Jump instantly to a note when there are no others inside the file/class/functions",
+					"default": true
+				},
+				"provision.keywords": {
+					"type": "object",
+					"title": "Keywords",
+					"description": "Keywords to look for with a specific configuration"
+				},
+				"provision.groups": {
+					"type": "array",
+					"title": "Keyword groups",
+					"description": "Keyword groups to use",
+					"items": {
+						"type": "object",
+						"title": "Keyword group"
+					}
+				},
+				"provision.popup.sorting": {
+					"type": "string",
+					"enum": [
+						"line_numbers_asc",
+						"line_numbers_desc",
+						"category"
+					],
+					"title": "Pop-up sorting method",
+					"description": "Sorting method used to order the pop-up items",
+					"default": "line_numbers_asc"
+				},
+				"provision.bar.showWhenEmpty": {
+					"type": "boolean",
+					"title": "Keyword groups",
+					"description": "Keyword groups to use",
+					"default": "false"
+				},
+				"provision.bar.position": {
+					"type": "string",
+					"title": "Position of the items inside the statubar",
+					"description": "The position where in the statusbar the information needs to be shown",
+					"enum": [
+						"left",
+						"right"
+					],
+					"default": "left"
+				},
+				"provision.bar.priority": {
+					"type": "integer",
+					"title": "The priority given to the statusbar items",
+					"description": "Description",
+					"default": 1
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/underscore": "^1.9.3",
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^10.12.21",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28"
+	},
+	"dependencies": {
+		"underscore": "^1.9.1"
+	}
+}
