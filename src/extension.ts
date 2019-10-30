@@ -1,5 +1,5 @@
 
-import { ExtensionContext, extensions, workspace } from 'vscode'
+import { ExtensionContext, workspace, ConfigurationTarget } from 'vscode'
 import Hub from './main/Hub'
 
 var hub: Hub
@@ -40,6 +40,6 @@ function convert() {
 		groups.push(group)
 	}
 
-	current.update('keywords', keywords)
-	current.update('groups', groups)
+	current.update('keywords', keywords, ConfigurationTarget.Global)
+	current.update('groups', groups, ConfigurationTarget.Global)
 }
