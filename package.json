@@ -3,7 +3,7 @@
 	"displayName": "Provision Bar",
 	"author": "Fooxly <hello@fooxly.com> (https://developers.fooxly.com/)",
 	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"keywords": [
 		"fooxly",
 		"vscode",
@@ -88,7 +88,7 @@
 				"provision.groups": {
 					"type": "array",
 					"title": "Keyword groups",
-					"description": "Keyword groups to use",
+					"description": "Group certain keywords together with one title and tooltip",
 					"items": {
 						"type": "object",
 						"title": "Keyword group"
@@ -107,14 +107,14 @@
 				},
 				"provision.bar.showWhenEmpty": {
 					"type": "boolean",
-					"title": "Show statusbar item when empty",
-					"description": "Show statusbar items when the amount of items is 0",
+					"title": "Show statusbar button when empty",
+					"description": "Show a statusbar button when the amount of items is 0",
 					"default": "false"
 				},
 				"provision.bar.position": {
 					"type": "string",
-					"title": "Position of the items inside the statubar",
-					"description": "The position where in the statusbar the items needs to be shown",
+					"title": "Statusbar button position",
+					"description": "The position for the statusbar buttons",
 					"enum": [
 						"left",
 						"right"
@@ -123,8 +123,8 @@
 				},
 				"provision.bar.priority": {
 					"type": "integer",
-					"title": "The priority given to the statusbar items",
-					"description": "Description",
+					"title": "Statusbar button priority",
+					"description": "The priority given to the statusbar buttons",
 					"default": 1
 				}
 			}
