@@ -13,13 +13,13 @@
     <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">Provision: Bar</a>&nbsp;&nbsp;&nbsp;
     <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-syntax">Provision: Syntax</a>
   </p>
-
-  [![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.provision-bar.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar)
-  [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/fooxly.provision-bar.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar)
-  [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.provision-bar.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-  ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 </h1>
+
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.provision-bar.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/fooxly.provision-bar.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar)
+[![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.provision-bar.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 <br />
 
