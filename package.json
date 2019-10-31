@@ -13,7 +13,8 @@
 		"note",
 		"notes",
 		"keyword",
-		"statusbar"
+		"statusbar",
+		"provision"
 	],
 	"homepage": "https://github.com/Fooxly/vscode-provision-bar",
 	"repository": {
