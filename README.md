@@ -121,7 +121,7 @@ Check out our [Getting Started]("https://developer.fooxly.com/extensions/provisi
       },
       "tooltip": <"string">
     }
-  }]
+  }
   ```
 
   * `keyword` *(optional)*: If the keyword needs to be different from the keywords object key, if it is not set the keywords object key will be used.
