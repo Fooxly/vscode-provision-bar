@@ -41,7 +41,7 @@
 		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
 	},
 	"dependencies": {
-		"underscore": "^1.9.1"
+		"underscore": "^1.12.1"
 	},
 	"devDependencies": {
 		"uglify-js": "^3.6.7",
