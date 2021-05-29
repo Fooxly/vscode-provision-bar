@@ -3,7 +3,7 @@
 	"displayName": "Provision Bar",
 	"author": "Fooxly <hello@fooxly.com> (https://developer.fooxly.com/)",
 	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
-	"version": "3.0.3",
+	"version": "3.0.4",
 	"keywords": [
 		"fooxly",
 		"vscode",
@@ -28,30 +28,28 @@
 	"license": "MIT",
 	"main": "./out/extension.js",
 	"engines": {
-		"yarn": "^1",
-		"node": "^10",
-		"vscode": "^1.39.0"
+		"yarn": ">=1",
+		"node": ">=12",
+		"vscode": ">=1.39.0"
 	},
 	"scripts": {
-		"vscode:prepublish": "yarn run compile",
+		"package": "yarn run compile && vsce package --yarn -o extension.vsix",
 		"compile": "tsc -p ./ && yarn minify",
 		"minify": "uglifyjs-folder -e -x .js -o out out",
 		"watch": "tsc -watch -p ./",
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
 	},
-	"dependencies": {
-		"underscore": "^1.12.1"
-	},
+	"dependencies": {},
 	"devDependencies": {
-		"uglify-js": "^3.6.7",
-		"uglifyjs-folder": "^1.5.1",
-		"@types/mocha": "^2.2.42",
-		"@types/node": "^10.12.21",
-		"@types/underscore": "^1.9.3",
-		"tslint": "^5.12.1",
-		"typescript": "^3.3.1",
-		"vscode": "^1.1.28"
+		"@types/mocha": "^8.2.2",
+		"@types/node": "^15.6.1",
+		"tslint": "^6.1.3",
+		"typescript": "^4.3.2",
+		"uglify-js": "^3.13.8",
+		"uglifyjs-folder": "^2.0.0",
+		"vsce": "^1.88.0",
+		"vscode": "^1.1.37"
 	},
 	"publisher": "Fooxly",
 	"icon": "assets/icon.png",
