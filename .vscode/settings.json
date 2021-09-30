@@ -12,7 +12,11 @@
         ".vscode": false,
         "assets": false,
         ".eslintrc.json": false,
-        "tsconfig.json": false
+        "tsconfig.json": false,
+        ".github": false,
+        ".gitmodules": false,
+        "MANUAL.md": false,
+        "package.json": false
     },
     "search.exclude": {
         "out": true, // set this to false to include "out" folder in search results
