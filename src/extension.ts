@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
-import { getCountForGroup, getGroups, getKeywordsByGroup, onDocumentChangeListener } from './ProVision/DocumentHelper';
+
+import { getCountForGroup, onDocumentChangeListener } from './ProVision/DocumentHelper';
+import { getGroups } from './ProVision/utils';
 import { Group } from './Provision/types';
 import ProVision from './ProVision';
 
@@ -8,7 +10,7 @@ let config: vscode.WorkspaceConfiguration | undefined = undefined;
 
 export function activate(context: vscode.ExtensionContext) {
 	// Initialize the ProVision Core
-	ProVision.initialize();
+	ProVision.initialize(context);
 	// Setup all the configruation settings
 	handleConfigUpdate();
 
@@ -48,7 +50,7 @@ const updateGroup = (group: string, counter: number) => {
 			(config?.get?.('bar.side') ?? 'left') === 'left' ?
 				vscode.StatusBarAlignment.Left :
 				vscode.StatusBarAlignment.Right,
-			10);
+				config?.get?.('bar.priority') === undefined ? 10 : config?.get?.('bar.priority'));
 	}
 	// Check if the item actually exists
 	if (!item) return;
@@ -60,13 +62,14 @@ const updateGroup = (group: string, counter: number) => {
 	else item.tooltip = group.charAt(0).toUpperCase() + group.slice(1).toLowerCase();
 	item.text = (
 		!groupProps?.title
-			? group.charAt(0).toUpperCase() + group.slice(1).toLowerCase()
+			? `${group.charAt(0).toUpperCase() + group.slice(1).toLowerCase()} (${counter})`
 			: typeof groupProps.title === 'string'
 				? groupProps.title.replace('{0}', counter.toString())
 				: counter === 1 && groupProps.title['1']?.length
 					? groupProps.title['1'].replace('{0}', counter.toString())
 					: groupProps.title['*'].replace('{0}', counter.toString())
 	);
+	if (groupProps?.foregroundStyle?.length) item.color = groupProps?.foregroundStyle[0] === '#' ? groupProps?.foregroundStyle : new vscode.ThemeColor(groupProps.foregroundStyle);
 	if (groupProps?.backgroundStyle?.length) item.backgroundColor = new vscode.ThemeColor(groupProps.backgroundStyle);
 	item.command = {
 		command: 'ProVision.listGroup',

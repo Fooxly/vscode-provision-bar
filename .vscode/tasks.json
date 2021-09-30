@@ -10,7 +10,7 @@
                 "$ts-webpack-watch",
                 "$tslint-webpack-watch"
 			],
-			"isBackground": true,
+			"isBackground": false,
 			"presentation": {
 				"reveal": "never"
 			},
