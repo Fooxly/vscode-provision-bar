@@ -1,5 +1,6 @@
 /node_modules
 /out
 /.vscode-test
+/src/ProVision
 .DS_Store
 *.vsix
