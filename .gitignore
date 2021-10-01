@@ -2,6 +2,5 @@
 /out
 /dist
 /.vscode-test
-/src/ProVision
 .DS_Store
 *.vsix

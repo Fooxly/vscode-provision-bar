@@ -13,7 +13,10 @@ export function activate(context: vscode.ExtensionContext) {
 	ProVision.initialize(context);
 	// Setup all the configruation settings
 	handleConfigUpdate();
-
+	// Listen for config changes to apply
+	vscode.workspace.onDidChangeConfiguration(() => {
+		handleConfigUpdate();
+	});
 	// Update based on document change
 	onDocumentChangeListener(context, handleUpdate);
 	// Begin the first update cycle

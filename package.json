@@ -47,20 +47,20 @@
                     "description": "Keywords to look for with a specific configuration.",
 					"default": {
 						"TODO": {
+							"group": "notes",
 							"color": "#fff",
 							"backgroundColor": "#f2b01f",
-							"rulerPlacement": "right",
-							"rulerColor": "rgba(242, 176, 31, 0.8)",
-							"highlight": "keyword",
-							"group": "notes"
+							"overviewRulerColor": "rgba(242, 176, 31, 0.8)",
+							"overviewRulerLane": 4,
+							"isWholeLine": false
 						},
 						"FIXME": {
+							"group": "notes",
 							"color": "#fff",
 							"backgroundColor": "#d85f88",
-							"rulerPlacement": "right",
-							"rulerColor": "rgba(216, 95, 136, 0.8)",
-							"highlight": "keyword",
-							"group": "notes"
+							"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
+							"overviewRulerLane": 4,
+							"isWholeLine": false
 						}
 					}
                 },
