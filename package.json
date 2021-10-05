@@ -122,7 +122,7 @@
 		"mocha": "^8.2.1",
 		"typescript": "^4.1.3",
 		"vscode-test": "^1.5.0",
-		"ts-load er": "^8.0.14",
+		"ts-loader": "^8.0.14",
 		"webpack": "^5.19.0",
 		"webpack-cli": "^4.4.0"
 	}
