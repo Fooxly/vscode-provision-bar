@@ -1,17 +1,15 @@
 <h1 align="center">
-  <p align="center">
-    <a title="ProVision" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">
-      <img src="https://assets.fooxly.com/extensions/provision/general/icon.png" alt="ProVision" height="150" />
-    </a>
-  </p>
+  <a title="ProVision" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">
+    <img src="https://assets.fooxly.com/extensions/provision/general/icon.png" alt="ProVision" height="150" />
+  </a>
   <p>ProVision: Bar</p>
   <p style="color: #A2A2A2; font-size: 18px;">The best way to keep your notes organized</p>
   <br>
   <p style="color: #3366BB; font-size: 14px; font-weight: normal;">
-    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision">Provision Bundle</a>&nbsp;&nbsp;&nbsp;
-    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">Provision: Lens</a>&nbsp;&nbsp;&nbsp;
-    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">Provision: Bar</a>&nbsp;&nbsp;&nbsp;
-    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-syntax">Provision: Syntax</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision">ProVision Bundle</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">ProVision: Lens</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">ProVision: Bar</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-syntax">ProVision: Syntax</a>
   </p>
 </h1>
 
@@ -33,14 +31,12 @@ ext install fooxly.provision-bar
 </p>
 <br />
 
-## What's new in Provision: Bar 3
+## What's new in ProVision: Bar 4
 
 * Even quicker load and response times 🚀
 * Easier configuration
 
-## ️️❤️&nbsp; Support us
-
-> About **40%** of your donation goes to one of the charities we support. For further information or questions please visit [our website](https://www.fooxly.com/charity) or contact us via [charity@fooxly.com](mailto:charity@fooxly.com).
+## ❤️ Support us
 
 <p>
   <a title="BuyMeACoffee" href="https://www.buymeacoffee.com/fooxly">
@@ -54,105 +50,52 @@ ext install fooxly.provision-bar
   </a>
 </p>
 
-<br/>
-
-# Provision: Bar
+# ProVision: Bar
 
 > A package by [Fooxly](https://www.fooxly.com).
 
-**Provision: Bar** provides an **easy to use** and **highly customizable** items to your statusbar
-to view the notes you or others in your team have left. This will **save you lots of time** searching and unfolding functions
-and/or classes to determine if there are any notes left.
+**ProVision: Bar** provides **easy to use** and **highly customizable** buttons to your statusbar. When opening a file it will search for the provided keywords and show you a simple overview of your notes. When clicking on a group you get an overview of all your notes in the specified group.
 
-## 📐 &nbsp;Features
+## 📐 Features
 
-* Create custom keywords with plenty of customization options
+* Create custom keywords
 * Group keywords together
-* Show pop-ups with every note inside a file
+* Show an overview of your notes in the statusbar
 * Jump directly to a note
 * View all of your notes in a long and complex file **instantly**
 
-## 📙 &nbsp;How to use
+## 📙 How to use
 
-Check out our [Getting Started](https://developer.fooxly.com/extensions/provision/guide) guide or use `Help: Provision` for more information.
+You can start using it right away! But if you want to customize it more, you can take a look at our manual via the `Help: ProVision` command.
 
-## 📕 &nbsp;Commands
+## 📕 Commands
 
-* `Help: Provision` Instructions on how to create a new keyword or group
-* `Provision: List` Show all notes in the current file
+* `Help: ProVision`: Shows you the manual you are currently reading.
+* `ProVision: List All`: Shows you all the notes in the current file.
+* `ProVision: List Group`: Shows you all the notes in the current file from a specifc group.
 
-## ⚙️ &nbsp;Available Settings
+## ⚙️ Available Settings
 
-* `provision.moveOnSingle`: Jump instantly to a note when there are no others inside the file/class/function (`true` by default)
+* `ProVision.keywords`: The keywords will be searched for. _(For setup take a look at our manual)_
+* `ProVision.groups`: Custom group appearance. _(For setup take a look at our manual)_
+* `ProVision.list.moveOnSingleResult`: Jump to the note instantly when there are is only 1 result.
 
-  ```json
-  "provision.moveOnSingle": <true|false>
-  ```
+    ```json
+    "ProVision.list.moveOnSingleResult": <true|false>
+    ```
 
-* `provision.popup.sorting`: Sorting method used to order the pop-up items (`"line_numbers_asc"` by default)
+* `ProVision.bar.side`: On which side of the statusbar the items should appear.
 
-  ```json
-  "provision.popup.sorting": <"line_numbers_asc"|"line_numbers_asc"|"category">
-  ```
+    ```json
+    "ProVision.bar.side": <"left"|"right">
+    ```
 
-* `provision.bar.showWhenEmpty`: Show a statusbar button when the amount of items is 0 (`false` by default)
+* `ProVision.bar.priority`: The priority the items get inside the statusbar.
 
-  ```json
-  "provision.bar.showWhenEmpty": <true|false>
-  ```
-
-* `provision.bar.position`: The position for the statusbar buttons (`left` by default)
-
-  ```json
-  "provision.bar.position": <"left"|"right">
-  ```
-
-* `provision.bar.priority`: The priority given to the statusbar buttons (`1` by default)
-
-  ```json
-  "provision.bar.priority": <number>
-  ```
-
-* `provision.keywords`: Keywords to look for with a specific configuration
-
-  ```json
-  "provision.keywords": {
-    "NOTE": {
-      "keyword": <"string">,
-      "caseSensitive": <true|false>,
-      "includesColon": <true|false>,
-      "title": {
-        "1": <"string">,
-        "*": <"string">
-      },
-      "tooltip": <"string">
-    }
-  }
-  ```
-
-  * `keyword` *(optional)*: If the keyword needs to be different from the keywords object key, if it is not set the keywords object key will be used.
-  * `caseSensitive` *(optional)*: Whether or not the keyword needs to be case sensitive. (`true` by default)
-  * `includesColon` *(optional)*: Whether or not the keyword is only valid with a colon sign suffix. (`true` by default)
-  * `title` *(optional)*: An object with the titles used for the amount of notes. `*` is the fallback text if the specific number is not listed. To show the amount use `{0}` inside the string.
-  * `tooltip` *(optional)*: An string shown when hovering on the statusbar items.
-
-* `provision.groups`: Group certain keywords together with one title and tooltip
-
-  ```json
-  "provision.groups": [{
-    "keywords": [<"keyword">, <"keyword">],
-    "title": {
-      "1": <"string">,
-      "*": <"string">
-    },
-    "tooltip": <"string">
-  }]
-  ```
-
-  * `keywords`: Array of keywords to group.
-  * `title`: An object with the titles used for the amount of notes. `*` is the fallback text if the specific number is not listed. To show the amount use `{0}` inside the string.
-  * `tooltip`: An string shown when hovering on the statusbar items.
+    ```json
+    "ProVision.bar.priority": <number>
+    ```
 
 ## License
 
-[MIT](https://github.com/Fooxly/vscode-provision-bar/blob/master/LICENSE) &copy; Fooxly
+[MIT](https://github.com/Fooxly/vscode-provision-lens/blob/master/LICENSE) &copy; Fooxly
