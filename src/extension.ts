@@ -6,11 +6,16 @@ import { Group } from './Provision/types';
 import ProVision from './ProVision';
 
 const statusbarItems = new Map<string, vscode.StatusBarItem>();
+const disposables: vscode.Disposable[] = [];
+let enabled = true;
 let config: vscode.WorkspaceConfiguration | undefined = undefined;
 
 export function activate(context: vscode.ExtensionContext) {
 	// Initialize the ProVision Core
 	ProVision.initialize(context);
+
+	disposables.push(vscode.commands.registerCommand('ProVision.bar.toggle', handleToggle));
+
 	// Setup all the configruation settings
 	handleConfigUpdate();
 	// Listen for config changes to apply
@@ -25,10 +30,22 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() {
 	removeAllGroups();
+	for (const disposable of disposables) {
+        disposable.dispose();
+    }
 	ProVision.destroy();
 }
 
+const handleToggle = () => {
+	enabled = !enabled;
+	if (!enabled) {
+		removeAllGroups();
+	}
+	handleUpdate();
+};
+
 const handleUpdate = () => {
+	if (!enabled) return;
 	// If there is no active document, the items should be removed
 	if (!vscode.window.activeTextEditor?.document) {
 		removeAllGroups();

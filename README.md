@@ -73,6 +73,7 @@ You can start using it right away! But if you want to customize it more, you can
 * `Help: ProVision`: Shows you the manual you are currently reading.
 * `ProVision: List All`: Shows you all the notes in the current file.
 * `ProVision: List Group`: Shows you all the notes in the current file from a specifc group.
+* `ProVision: Toggle Bar`: Toggle the visibility of the statusbar items.
 
 ## ⚙️ Available Settings
 
@@ -98,4 +99,4 @@ You can start using it right away! But if you want to customize it more, you can
 
 ## License
 
-[MIT](https://github.com/Fooxly/vscode-provision-lens/blob/master/LICENSE) &copy; Fooxly
+[MIT](https://github.com/Fooxly/vscode-provision-bar/blob/master/LICENSE) &copy; Fooxly
