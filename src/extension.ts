@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 import { getCountForGroup, onDocumentChangeListener } from './ProVision/DocumentHelper';
 import { getGroups } from './ProVision/utils';
-import { Group } from './Provision/types';
+import { Group } from './ProVision/types';
 import ProVision from './ProVision';
 
 const statusbarItems = new Map<string, vscode.StatusBarItem>();
