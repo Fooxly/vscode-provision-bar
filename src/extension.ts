@@ -114,5 +114,6 @@ const removeAllGroups = () => {
 
 const handleConfigUpdate = () => {
 	config = vscode.workspace.getConfiguration('ProVision');
+	removeAllGroups();
 	handleUpdate();
 };
